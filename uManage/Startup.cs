@@ -38,8 +38,9 @@ namespace S203.uManage
             // Load Static Files
             appBuilder.UseFileServer(new FileServerOptions()
             {
-                RequestPath = PathString.Empty,
-                FileSystem = new PhysicalFileSystem(@".\Web")
+                EnableDirectoryBrowsing = true,
+                RequestPath = new PathString("/app"),
+                FileSystem = new EmbeddedResourceFileSystem("S203.uManage.Static.Web")
             });
         }
     }
