@@ -1,5 +1,33 @@
 <html>
-    <head>
-        <title>App Title 5</title>
-    </head>
+  <head>
+    <title>uManage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+
+    <!-- 1. Load libraries -->
+    <!-- IE required polyfills, in this exact order -->
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/umanage_app.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+      System.config({
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      
+      System.import('assets/js/main.js').then(null, console.error.bind(console));
+    </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+    <umanage-app>Loading...</umanage-app>
+  </body>
+
 </html>

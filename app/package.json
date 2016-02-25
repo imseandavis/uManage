@@ -10,25 +10,27 @@
     "typings": "typings",
     "tslint": "tslint -c tslint.json src/app/**/*.ts"
   },
-  "dependencies": {
+  "dependencies": {    
+  },
+  "devDependencies": {
     "angular2": "2.0.0-beta.7",
     "systemjs": "0.19.20",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.5.15"
-  },
-  "devDependencies": {
+    "zone.js": "0.5.15",
     "concurrently": "^1.0.0",
     "del": "^2.1.0",
     "express": "^4.13.4",
     "gulp": "^3.9.0",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-strip-debug": "^1.1.0",
     "gulp-tslint": "^4.3.2",
     "gulp-typescript": "^2.8.0",
+    "gulp-uglify": "^1.5.3",
     "tslint": "^3.5.0",
-    "typescript": "^1.7.5",
+    "typescript": "^1.8.2",
     "typings": "^0.6.8"
   }
 }

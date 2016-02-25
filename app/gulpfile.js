@@ -1,9 +1,11 @@
 var gulp = require('gulp'),
     del = require('del'),
     typescript = require('gulp-typescript'),
-    sourcemaps = require('gulp-sourcemaps'),
     tslint = require('gulp-tslint'),
     tscConfig = require('./tsconfig.json'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    stripDebug = require('gulp-strip-debug'),
     express = require('express');
 
 gulp.task('clean',function(){
@@ -21,12 +23,27 @@ gulp.task('assets', ['clean'], function(){
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('compile', ['clean'], function(){
+gulp.task('vendor', ['clean'], function(){
+    return gulp
+        .src([//'node_modules/es6-shim/es6-shim.js',
+        'node_modules/systemjs/dist/system-polyfills.js',
+        'node_modules/systemjs/dist/system.js',
+        'node_modules/angular2/bundles/angular2-polyfills.js',
+        'node_modules/rxjs/bundles/Rx.js',
+        'node_modules/angular2/bundles/angular2.js'])
+        .pipe(concat('vendor.js'))
+        .pipe(stripDebug())
+        //.pipe(uglify())
+        .pipe(gulp.dest('dist/assets/js'));
+});
+
+gulp.task('app', ['clean'], function(){
     return gulp
         .src('src/app/**/*.ts')
-        .pipe(sourcemaps.init())
         .pipe(typescript(tscConfig.compilerOptions))
-        .pipe(sourcemaps.write('.'))
+        //.pipe(concat("app.js"))
+        .pipe(stripDebug())
+        //.pipe(uglify())
         .pipe(gulp.dest('dist/assets/js'));
 });
 
@@ -36,7 +53,7 @@ function startExpress() {
    app.listen(8080);
 }
 
-gulp.task('build', ['tslint', 'compile', 'assets'])
+gulp.task('build', ['tslint', 'vendor', 'app', 'assets'])
 gulp.task('default', ['build'], function(){
     startExpress();
 });
