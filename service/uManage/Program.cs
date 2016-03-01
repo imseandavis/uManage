@@ -2,7 +2,6 @@
 using NLog;
 using System;
 using System.Configuration;
-
 namespace S203.uManage
 {
     class Program
@@ -32,7 +31,7 @@ namespace S203.uManage
                     if (Environment.UserInteractive)
                         logger.Info("Press any key to exit... ");
 
-                    Console.ReadLine();
+                    Console.Read();
 
                     logger.Warn("Stopping server...");
                 }
@@ -43,7 +42,7 @@ namespace S203.uManage
             }
             finally
             {
-                logger.Info("uManage is stoped!");
+                logger.Info("uManage is stopped!");
             }
         }
     }

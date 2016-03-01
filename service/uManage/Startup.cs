@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using System.Net;
+using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
@@ -16,6 +17,10 @@ namespace S203.uManage
         {
             var config = new HttpConfiguration();
 
+            // Enable Integrated Windows Authentication
+            var listener = (HttpListener)appBuilder.Properties[typeof(HttpListener).FullName];
+            listener.AuthenticationSchemes = AuthenticationSchemes.IntegratedWindowsAuthentication;
+
             // Enable CORS
             appBuilder.UseCors(CorsOptions.AllowAll);
 
@@ -27,6 +32,7 @@ namespace S203.uManage
             config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
 
 #if DEBUG
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
@@ -39,9 +45,12 @@ namespace S203.uManage
             appBuilder.UseFileServer(new FileServerOptions()
             {
                 EnableDirectoryBrowsing = true,
-                RequestPath = new PathString("/app"),
+                RequestPath = new PathString(""),
                 FileSystem = new EmbeddedResourceFileSystem("S203.uManage.Static.Web")
             });
+
+            // Configure!
+            appBuilder.UseWebApi(config);
         }
     }
 }
