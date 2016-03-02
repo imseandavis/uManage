@@ -34,7 +34,8 @@ export function main() {
           .then(rootTC => {
             rootTC.detectChanges();
             let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-            expect(DOM.querySelectorAll(appDOMEl, 'sd-app > sd-navbar > nav > a')[1].href).toMatch(/http:\/\/localhost:\d+\/about/);
+            expect(DOM.querySelectorAll(appDOMEl, 'umanage-app > umanage-navbar > nav > a')[0].href)
+                .toMatch(/http:\/\/localhost:\d+/);
           });
       }));
   });
@@ -42,7 +43,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-app></sd-app>',
+  template: '<umanage-app></umanage-app>',
   directives: [AppComponent]
 })
 class TestComponent {}
