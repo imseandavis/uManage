@@ -72,6 +72,7 @@ export const DEV_NPM_DEPENDENCIES:IDependency[] = normalizeDependencies([
     {src: 'angular2/bundles/angular2.js', inject: 'libs'},
     {src: 'angular2/bundles/router.js', inject: 'libs'},
     {src: 'angular2/bundles/http.js', inject: 'libs'},
+    {src: 'jquery/dist/jquery.js', inject: 'libs'},
     {src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs'},
 
     {src: 'bootstrap/dist/css/bootstrap.css', inject: true},
@@ -85,6 +86,7 @@ export const PROD_NPM_DEPENDENCIES:IDependency[] = normalizeDependencies([
     {src: 'angular2/es6/dev/src/testing/shims_for_IE.js', inject: 'shims'},
     {src: 'systemjs/dist/system.js', inject: 'shims'},
     {src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs'},
+    {src: 'jquery/dist/jquery.js', inject: 'libs'},
     {src: 'bootstrap/dist/js/bootstrap.js', inject: 'libs'},
 
     {src: 'bootstrap/dist/css/bootstrap.css', inject: true},
