@@ -8,6 +8,8 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using System.Web.Http;
+using Ninject.Web.Common.OwinHost;
+using Ninject.Web.WebApi.OwinHost;
 
 namespace S203.uManage
 {
@@ -32,7 +34,6 @@ namespace S203.uManage
             config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
 
 #if DEBUG
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
@@ -49,8 +50,12 @@ namespace S203.uManage
                 FileSystem = new EmbeddedResourceFileSystem("S203.uManage.Static.Web")
             });
 
-            // Configure!
-            appBuilder.UseWebApi(config);
+            // Dependency Injection
+            appBuilder.UseNinjectMiddleware(() => NinjectConfig.CreateKernel.Value);
+
+            // Configure! Use Ninject instead of the default!
+            appBuilder.UseNinjectWebApi(config);
+            //appBuilder.UseWebApi(config);
         }
     }
 }

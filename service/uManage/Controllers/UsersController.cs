@@ -1,23 +1,41 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Web.Http;
+using S203.uManage.Data.Interfaces;
+using S203.uManage.Models;
 
 namespace S203.uManage.Controllers
 {
     [RoutePrefix("api/users")]
-    public class UsersController:ApiController
+    public class UsersController : ApiController
     {
-        [HttpGet, Route("me")]
-        public Task<IHttpActionResult> GetCurrentUser()
+        private readonly IDirectory<User> _usersDirectory;
+
+        public UsersController(IDirectory<User> usersDirectory)
         {
-            var userName = User.Identity.Name;
-            throw new NotImplementedException();
+            if (_usersDirectory == null)
+                _usersDirectory = usersDirectory;
+        }
+
+        [HttpGet, Route("me")]
+        public IHttpActionResult GetCurrentUser()
+        {
+            var user = _usersDirectory.Find(User.Identity.Name);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
 
         [HttpGet, Route("{id}")]
-        public Task<IHttpActionResult> GetUser(Guid id)
+        public IHttpActionResult GetUser(Guid id)
         {
-            throw new NotImplementedException();
+            var user = _usersDirectory.Find(User.Identity.Name);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
     }
 }
