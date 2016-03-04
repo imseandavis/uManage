@@ -5,13 +5,13 @@ import {ToolbarComponent} from './toolbar.component';
 import {DashboardComponent} from '../../dashboard/components/dashboard.component';
 
 @Component({
-  selector: 'umanage-app',
-  moduleId: module.id,
-  templateUrl: './app.component.html',
-  encapsulation: ViewEncapsulation.None,
-  directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
+    selector: 'umanage-app',
+    moduleId: module.id,
+    templateUrl: './app.component.html',
+    encapsulation: ViewEncapsulation.None,
+    directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
 })
 @RouteConfig([
-  { path: '/',      name: 'Dashboard',  component: DashboardComponent  }
+    {path: '/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true}
 ])
 export class AppComponent {}
