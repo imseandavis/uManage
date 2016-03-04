@@ -1,5 +1,5 @@
 :host {
-    background-color: #1565C0;
+    background-color: #2196F3;
     color: rgba(255, 255, 255, 0.87);
     display: block;
     height: 50px;
@@ -13,12 +13,4 @@ logo {
     height: 35px;
     margin-top: 8px;
     width: 35px;
-}
-
-more {
-    background: url("./assets/svg/more.svg");
-    float: right;
-    height: 24px;
-    margin-top: 15px;
-    width: 24px;
 }

@@ -97,6 +97,7 @@
   "dependencies": {
     "angular2": "2.0.0-beta.7",
     "bootstrap": "^3.3.6",
+    "bootstrap-material-design": "^0.5.9",
     "es6-module-loader": "^0.17.8",
     "es6-shim": "^0.33.3",
     "font-awesome": "^4.5.0",
