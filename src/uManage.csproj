@@ -155,9 +155,18 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="wwwroot\assets\data.json" />
+    <EmbeddedResource Include="wwwroot\tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\assets\svg\more.svg" />
+    <EmbeddedResource Include="wwwroot\css\main.css" />
+    <EmbeddedResource Include="wwwroot\index.html" />
+    <EmbeddedResource Include="wwwroot\js\app.js" />
+    <EmbeddedResource Include="wwwroot\js\shims.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

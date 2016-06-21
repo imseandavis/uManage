@@ -47,7 +47,7 @@ namespace S203.uManage
             {
                 EnableDirectoryBrowsing = true,
                 RequestPath = new PathString(""),
-                FileSystem = new EmbeddedResourceFileSystem("S203.uManage.Static.Web")
+                FileSystem = new EmbeddedResourceFileSystem("S203.uManage.wwwroot")
             });
 
             // Dependency Injection
