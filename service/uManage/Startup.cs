@@ -25,7 +25,7 @@ namespace S203.uManage
 
             // Enable CORS
             appBuilder.UseCors(CorsOptions.AllowAll);
-
+            
             // Disable XML support
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
