@@ -157,17 +157,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Static\Web\index.html" />
-    <EmbeddedResource Include="Static\Web\favicon.ico" />
-    <EmbeddedResource Include="Static\Web\assets\img\umanage-dark.png" />
-    <EmbeddedResource Include="Static\Web\assets\img\umanage-light.png" />
-    <EmbeddedResource Include="Static\Web\assets\svg\more.svg" />
-    <EmbeddedResource Include="Static\Web\assets\svg\logo.svg" />
-    <EmbeddedResource Include="Static\Web\css\all.css" />
-    <EmbeddedResource Include="Static\Web\js\app.js" />
-    <EmbeddedResource Include="Static\Web\js\shims.js" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
