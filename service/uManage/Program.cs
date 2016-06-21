@@ -2,6 +2,7 @@
 using NLog;
 using System;
 using System.Configuration;
+
 namespace S203.uManage
 {
     class Program
@@ -15,10 +16,10 @@ namespace S203.uManage
             {
                 logger.Info("Starting uManage Server");
 
-                var baseAddress = ConfigurationManager.AppSettings["baseUri"];
+                var baseAddress = ConfigurationManager.AppSettings["server.uri"];
 
                 if (string.IsNullOrWhiteSpace(baseAddress))
-                    throw new ArgumentNullException(baseAddress, "Base address not specified, check app.config and ensure the baseUri appSetting is specified.");
+                    throw new ArgumentNullException(baseAddress, "Server URI not specified, check app.config and ensure the server.uri appSetting is specified.");
 
                 logger.Info("Base address set: {0}", baseAddress);
 
