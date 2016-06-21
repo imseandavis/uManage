@@ -17,6 +17,7 @@ namespace S203.uManage.Data.Repositories
         }
 
         public IEnumerable<User> All { get; }
+
         public User Find(string identity)
         {
             using (var ctx = _context.LoadAndConnect())

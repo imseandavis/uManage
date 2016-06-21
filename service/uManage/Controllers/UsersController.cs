@@ -16,6 +16,17 @@ namespace S203.uManage.Controllers
                 _usersDirectory = usersDirectory;
         }
 
+        [HttpGet, Route()]
+        public IHttpActionResult GetAllUsers()
+        {
+            var users = _usersDirectory.All;
+
+            if (users == null)
+                return NotFound();
+
+            return Ok(users);
+        }
+
         [HttpGet, Route("me")]
         public IHttpActionResult GetCurrentUser()
         {
